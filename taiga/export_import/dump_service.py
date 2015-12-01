@@ -182,4 +182,5 @@ def dict_to_project(data, owner=None):
     if service.get_errors(clear=False):
         raise TaigaImportError(_("error importing timelines"))
 
+    proj.refresh_totals()
     return proj
