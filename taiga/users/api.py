@@ -222,7 +222,6 @@ class UsersViewSet(ModelCrudViewSet):
         except Exception:
             raise exc.WrongArguments(_("Invalid image format"))
 
-        request.user.delete_photo()
         request.user.photo = avatar
         request.user.save(update_fields=["photo"])
         user_data = self.admin_serializer_class(request.user).data
@@ -235,7 +234,7 @@ class UsersViewSet(ModelCrudViewSet):
         Remove the avatar of current logged user.
         """
         self.check_permissions(request, "remove_avatar", None)
-        request.user.delete_photo()
+        request.user.photo = None
         request.user.save(update_fields=["photo"])
         user_data = self.admin_serializer_class(request.user).data
         return response.Ok(user_data)

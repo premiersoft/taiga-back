@@ -16,7 +16,12 @@
 
 from django.apps import AppConfig
 
+from .signals.thumbnails import connect_thumbnail_signals
+
 
 class BaseAppConfig(AppConfig):
     name = "taiga.base"
     verbose_name = "Base App Config"
+
+    def ready(self):
+        connect_thumbnail_signals()
