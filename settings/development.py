@@ -19,3 +19,13 @@ from .common import *
 DEBUG = True
 
 TEMPLATES[0]["OPTIONS"]['context_processors'] += "django.template.context_processors.debug"
+DATABASES = {
+    'default': {
+        'ENGINE': 'transaction_hooks.backends.postgresql_psycopg2',
+        'NAME': 'd79ba81p7f6fat',
+        'USER': 'jlsvsdxpumqoxn',
+        'PASSWORD': 'uUwp9iNMKtdptFV4YbDMwwR5OC',
+        'HOST': 'ec2-54-235-170-124.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
